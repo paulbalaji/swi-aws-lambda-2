@@ -4,17 +4,15 @@ frameworkVersion: ">=1.2.0 <2.0.0"
 
 provider:
   name: aws
-  runtime: python2.7
+  runtime: python3.6
 
 functions:
   tracker:
     handler: handler.tracker
     events:
-      - http:
-          path: ping
-          method: get
-  currentTime:
-    handler: handler.endpoint
+      - schedule: rate(1 minute)
+  timepls:
+    handler: handler.timepls
     events:
       - http:
           path: ping
